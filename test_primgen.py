@@ -8,5 +8,5 @@ class Test(TestCase):
 
     def test_miller_rabin_method(self):
         from primgen import miller_rabin_method
-        self.assertTrue(miller_rabin_method(632485520306600051477731141302573178632491, .9) is True)
-        self.assertTrue(miller_rabin_method(989086760284979193666271685572629563840964, .99) is False)
+        self.assertTrue(miller_rabin_method(632485520306600051477731141302573178632491, .1) is True)
+        self.assertTrue(miller_rabin_method(989086760284979193666271685572629563840964, .01) is False)

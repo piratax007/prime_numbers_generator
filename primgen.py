@@ -7,10 +7,10 @@ def miller_rabin_method(odd_integer: int, p: float) -> bool:
     """
     Implement the Miller-Rabin primality test
     :param odd_integer: a odd number
-    :param p: probability of success
+    :param p: error probability
     :return: True if odd_integer is a probably primer number, False otherwise
     """
-    rounds = int(-math.log2(1 - p))
+    rounds = int(-math.log2(p))
 
     if odd_integer == 2:
         return True
@@ -55,16 +55,16 @@ def random_odd_integer(bits: int) -> int:
     return n
 
 
-def generate_probable_prime_number(bits: int, success_probability: float) -> int:
+def generate_probable_prime_number(bits: int, error_probability: float) -> int:
     """
-    Generate a probable prime number of length "bits" and "success_probability"
+    Generate a probable prime number of length "bits" and "error_probability"
     :param bits: length of the probable prime number
-    :param success_probability: probability of success between (0, 1)
+    :param error_probability: float between (0, 1)
     :return: a probable prime number
     """
     probable_prime_number = random_odd_integer(bits)
 
-    while miller_rabin_method(probable_prime_number, success_probability) is False:
+    while miller_rabin_method(probable_prime_number, error_probability) is False:
         probable_prime_number += 2
 
     return probable_prime_number
@@ -108,8 +108,8 @@ def check_probability(parameter):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="primgen",
-        description="This module allows you to find a probably prime number given a length in bits and a probability "
-                    "of success"
+        description="This module allows you to find a probably prime number given a length in bits and a error "
+                    "probability "
     )
 
     parser.add_argument(
@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-p", "--probability",
-        help="float between (0, 1): Specify a probability of success",
+        help="float between (0, 1): Specify the error probability",
         type=check_probability,
         required=True
     )
