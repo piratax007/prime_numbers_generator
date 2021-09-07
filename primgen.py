@@ -12,6 +12,9 @@ def miller_rabin_method(odd_integer: int, p: float) -> bool:
     """
     rounds = int(-math.log2(p))
 
+    if odd_integer == 1:
+        return False
+
     if odd_integer == 2:
         return True
 
