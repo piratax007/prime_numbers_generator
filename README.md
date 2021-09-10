@@ -1,4 +1,4 @@
-# Prime Numbers Generation
+# Prime Numbers Generator
 
 An implementation of the [Miller-Rabin Method][1] to evaluate the primality of a number. This script generate a random odd number given a lenght in bites and use the Miller-Rabin Method to verify if is a prime number else generate a new odd random number until find a prime number given a lenght in bites and an error probability.
 
